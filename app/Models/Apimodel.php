@@ -7,13 +7,15 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\DB;
 use Tymon\JWTAuth\Contracts\JWTSubject;
+use Illuminate\Support\Facades\Config;
+
 
 
 class Apimodel extends Model implements JWTSubject
 {
     use HasFactory, Notifiable;
 
-    protected $table = 'admin';
+    protected $table = Config::get('constants.tbl_cart');
     protected $primarykey = 'id';
 
     public function getJWTIdentifier()
@@ -45,11 +47,22 @@ class Apimodel extends Model implements JWTSubject
     }
 
     public static function getPropertyList($id){
-        $type = DB::table('property')->select('id','property_name','property_address','property_type_id','area','rooms','property_length','property_breathe','facing_diraction','price','latitude','longitude')
-        ->where('user_id', '=', $id)
+        $type = DB::table('property')->select('id','image','property_name','property_address','property_type_id','area','rooms','property_length','property_breathe','facing_diraction','price','latitude','longitude')
+        ->where('landlord_id', '=', $id)
         ->get()->toArray();
 
         return $type;
+    }
+
+    public static function getPropertyData($id)
+    {
+        $property = DB::table('cart as c')->select('c.id','u.image','p.property_name','p.property_address','c.createdate','u.name as user_name')
+        ->where('c.landlord_id', '=', $id)
+        ->join('property as p','c.property_id', '=', 'p.id')
+        ->join('users as u','c.user_id', '=', 'u.id')
+        ->get()->toArray();
+
+        return $property;
     }
 }
 

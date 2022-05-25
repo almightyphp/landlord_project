@@ -156,13 +156,13 @@
                             </a>
                         </li>
 
-                        <!-- <li>
-                            <a href="apps-filemanager.html" class="waves-effect">
+                        <li>
+                            <a href="{{ route('pricerange')}}" class="waves-effect">
                                 <i class="bx bx-file"></i>
                                 <span class="badge rounded-pill bg-success float-end" key="t-new"></span>
-                                <span key="t-file-manager">File Manager</span>
+                                <span key="t-file-manager">Price Range</span>
                             </a>
-                        </li> -->
+                        </li>
 
                         <li>
                             <a href="javascript: void(0);" class="has-arrow waves-effect">

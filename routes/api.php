@@ -32,6 +32,16 @@ Route::group(['middleware' => 'api'], function($routes) {
     Route::post("property_type",[Api::class,'property_type']);
     Route::post("addProperty",[Api::class,'addProperty']);
     Route::post("propertyList",[Api::class,'propertyList']);
+    Route::post("propertyDetails",[Api::class,'propertyDetails']);
+    Route::post("editProperty",[Api::class,'editProperty']);
+    Route::post("deleteProperty",[Api::class,'deleteProperty']);
+    Route::post("updateProfile",[Api::class,'updateProfile']);
+    Route::post("resetPassword",[Api::class,'resetPassword']);
+    Route::post("logout",[Api::class,'logout']);
+    Route::post("bookProperty",[Api::class,'bookProperty']);
+    Route::post("bookingList",[Api::class,'bookingList']);
+    Route::post("manageBooking",[Api::class,'manageBooking']);
+
 
 
 });

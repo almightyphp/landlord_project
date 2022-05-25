@@ -5,6 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Config;
+
 
 
 class Propertytype extends Model
@@ -15,7 +17,7 @@ class Propertytype extends Model
 
     public static function getTypeData()
     {
-        $users = DB::table('property_type')
+        $users = DB::table(Config::get('constants.tbl_property_type'))
             ->where('df', '=', '')                        
             ->get();
 

@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\Pricerange;
+
 
 
 /*
@@ -33,6 +35,6 @@ Route::group(['middleware'=>['sessioncheck']], function(){
     Route::post('/manageType', 'App\Http\Controllers\Propertytype@managePropertyType')->name('manageType');
     Route::post('/deleteType', 'App\Http\Controllers\Propertytype@deleteType')->name('deleteType');
     Route::post('/deleteMultiple', 'App\Http\Controllers\Propertytype@deleteMultiple')->name('deleteMultiple');
-
+    Route::get('/pricerange', 'App\Http\Controllers\Pricerange@index')->name('pricerange');
 
 });
