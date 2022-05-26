@@ -23,7 +23,10 @@ use App\Http\Controllers\Pricerange;
 // Route::get('/', 'logincontroller@index');
 
 
-Route::get('/', [LoginController::class, 'index']);
+Route::get('/', function() {
+    return view('login/login'); 
+});
+Route::get('/login', [LoginController::class, 'index']);
 // Route::post('/loginsubmit',[LoginController::class, 'loginCheck']);
 Route::post('/loginsubmit', 'App\Http\Controllers\LoginController@loginCheck')->name('loginsubmit.post');
 Route::get('/logout', 'App\Http\Controllers\LoginController@logout')->name('logout.post');
